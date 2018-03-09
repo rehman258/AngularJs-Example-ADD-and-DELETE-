@@ -1,0 +1,99 @@
+<html >
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Document</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	
+
+	
+
+  <link rel="stylesheet" href="style.css">
+
+ 
+  <style>
+    li{
+      list-style: none;
+      cursor: pointer;
+      margin-left: -5%;
+      height: 75px;
+      border:1px solid red;
+      transition: all .5s ease;
+    }
+    li:hover{
+      background-color: gray;
+      border:none;
+    }
+    button{
+      float: right;
+      position: relative;
+      bottom:6%;
+      cursor: pointer;
+      transition: all .5s ease;
+    }
+  </style>
+</head>
+<body ng-app="myapp">
+       <!-- YOU DELETE ACTION AND YOU CAN SEE LISTS -->
+      <div ng-controller="mycont" style="color:red;" class="container">
+        <form  name="myform" novalidate="novalidate" ng-submit="add()" ng-submit="delete()">
+             
+             <div>
+              <label for="">Name</label>
+              <input type="text" name="username" ng-model="username" required="" />
+              <span ng-show="myform.username.$dirty && myform.username.$invalid">
+                <span ng-show="myform.$error.required">Error for Name</span>
+              </span>
+             </div>
+
+
+             <div>
+              <label for="">Surname</label> 
+              <input type="text" name="usersurname" ng-model="usersurname" required="" />
+              <span ng-show="myform.usersurname.$dirty && myform.usersurname.$invalid">
+                <span ng-show="myform.$error.required">Error for Surname</span>
+              </span>
+             </div>
+              
+
+             <div>
+              <label for=""> E-mail</label> 
+              <input type="email" name="useremail" ng-model="useremail" required="" />
+              <span ng-show="myform.useremail.$dirty && myform.useremail.$invalid">
+                <span ng-show="myform.$error.required">Error for E-mail</span>
+                <span ng-show="myform.$error.email">Error for @ Symbol</span>
+              </span>
+             </div>
+             <input type="submit" ng-disabled="myform.username.$dirty && myform.username.$invalid || myform.useremail.$dirty && myform.useremail.$invalid || myform.usersurname.$dirty && myform.usersurname.$invalid || myform.$error.required">  
+
+        </form>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <ul>
+                <li ng-repeat="item in arr">
+                  {{item.Name}}<br>
+                  {{item.Surname}}<br>
+                  {{item.mail}} 
+                  <button ng-click="fordelet($index)">Delete</button>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+
+<script src="stylejs.js">
+  
+ 
+</script>
+</body>
+</html>
